@@ -1,7 +1,7 @@
 import React from "react";
 
-const RadialGradientBackground = () => {
-  return <div>RadialGradientBackground</div>;
+const RadialGradientBackground = ({ variant }: { variant?: string }) => {
+  return <div></div>;
 };
 
 export default RadialGradientBackground;

@@ -48,3 +48,11 @@ export const NAV_LINKS: NavLink[] = [
   { id: "services", label: "Services" },
   { id: "contact", label: "Contact" },
 ];
+
+
+// STATS
+export const STATS = [
+  {label: 'Years Experience', value: '2+'},
+  {label: 'Projects Completed', value: '5+'},
+  {label: 'Technologies', value: '12+'}
+]
