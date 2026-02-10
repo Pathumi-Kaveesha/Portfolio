@@ -1,12 +1,20 @@
-import { Star } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
 import FadeIn from "../animations/FadeIn";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+import {
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+} from "react-icons/si";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-950 via-black to-gray-900">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-950 via-black to-gray-900 pt-10 pb-7">
+      <RadialGradientBackground variant="hero" />
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse" />
@@ -27,10 +35,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_50%)] animate-pulse" />
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="text-left space-y-8">
+          <div className="text-left space-y-4 md:space-y-5">
             {/* Badge with shimmer effect */}
             <FadeIn delay={0}>
               <div className="inline-flex items-center gap-2 px-4 py-2 relative group cursor-pointer">
@@ -42,13 +50,13 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-primary/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 animate-pulse" />
 
                 {/* Badge content */}
-                <div className="relative flex items-center gap-2 bg-gradient-to-r from-primary/20 via-emerald-500/20 to-green-500/20 border-2 border-primary/40 rounded-full px-4 py-2 backdrop-blur-md shadow-2xl shadow-primary/20">
+                <div className="relative flex items-center gap-2 bg-gradient-to-r from-primary/20 via-emerald-500/20 to-green-500/20 border-2 border-primary/40 rounded-full px-3 py-1.5 backdrop-blur-md shadow-2xl shadow-primary/20">
                   <Star
-                    className="w-3.5 h-3.5 text-primary fill-primary flex-shrink-0 animate-spin"
+                    className="w-3 h-3 text-primary fill-primary flex-shrink-0 animate-spin"
                     style={{ animationDuration: "3s" }}
                   />
                   <span
-                    className="text-xs md:text-sm text-white tracking-[1.2px] font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-emerald-300 bg-[length:200%_auto] whitespace-nowrap"
+                    className="text-[10px] md:text-xs text-white tracking-[1.2px] font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-emerald-300 bg-[length:200%_auto] whitespace-nowrap"
                     style={{
                       animation: "gradient-x 3s ease infinite",
                       fontFamily: "Inter, system-ui, sans-serif",
@@ -64,7 +72,7 @@ const Hero = () => {
             {/* Heading with gradient animation */}
             <FadeIn delay={100}>
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-[1.1] tracking-tight"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-3 md:mb-4 leading-[1.1] tracking-tight"
                 style={{
                   fontFamily:
                     "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -109,7 +117,7 @@ const Hero = () => {
             {/* Paragraph with slide-in effect */}
             <FadeIn delay={200}>
               <p
-                className="text-lg md:text-xl lg:text-xl text-gray-300 max-w-[600px] leading-relaxed font-light tracking-wide relative group"
+                className="text-sm md:text-base lg:text-lg text-gray-300 max-w-[550px] leading-relaxed font-light tracking-wide relative group"
                 style={{ fontFamily: "Inter, system-ui, sans-serif" }}
               >
                 <span className="relative inline-block transform transition-all duration-500 group-hover:translate-x-2 group-hover:text-white">
@@ -141,7 +149,7 @@ const Hero = () => {
             <FadeIn delay={300}>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="group relative inline-flex items-center overflow-hidden mt-4"
+                className="group relative inline-flex items-center overflow-hidden mt-2 md:mt-3"
               >
                 {/* Multiple animated border gradients */}
                 <div
@@ -161,7 +169,7 @@ const Hero = () => {
 
                 {/* Button content */}
                 <div
-                  className="relative bg-gradient-to-r from-white to-gray-50 text-[#0a0a0a] rounded-2xl px-7 py-3.5 text-sm md:text-base font-black uppercase tracking-wider border-2 border-white group-hover:border-primary group-hover:from-primary group-hover:to-emerald-400 group-hover:text-white transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/40 transform group-hover:scale-110 group-hover:-translate-y-1"
+                  className="relative bg-gradient-to-r from-white to-gray-50 text-[#0a0a0a] rounded-2xl px-5 md:px-6 py-2.5 md:py-3 text-xs md:text-sm lg:text-base font-black uppercase tracking-wider border-2 border-white group-hover:border-primary group-hover:from-primary group-hover:to-emerald-400 group-hover:text-white transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/40 transform group-hover:scale-110 group-hover:-translate-y-1"
                   style={{
                     fontFamily:
                       "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -192,27 +200,25 @@ const Hero = () => {
 
             {/* Stats Section with modern cards */}
             <FadeIn delay={400}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-full mt-8 sm:mt-10 md:mt-12">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 max-w-full mt-5 md:mt-6 lg:mt-8">
                 {STATS.map((stat, index) => (
                   <div key={index} className="relative group text-left w-full">
                     {/* Animated background glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-emerald-500/10 to-green-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
 
                     {/* Stat card */}
-                    <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-primary/20 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 min-h-[100px] sm:min-h-[110px] md:min-h-[120px] lg:min-h-[130px] flex flex-col justify-between transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20 group-hover:-translate-y-1 overflow-hidden">
+                    <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-primary/20 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 min-h-[85px] sm:min-h-[95px] md:min-h-[100px] flex flex-col justify-between transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20 group-hover:-translate-y-1 overflow-hidden">
                       {/* Corner accent */}
-                      <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-2xl sm:rounded-bl-3xl rounded-tr-lg sm:rounded-tr-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-2xl rounded-tr-lg sm:rounded-tr-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Value with gradient animation */}
                       <div
-                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-1.5 sm:mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-green-400 bg-[length:200%_auto] tabular-nums leading-none break-all"
+                        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-black mb-1 sm:mb-1 bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-green-400 bg-[length:200%_auto] tabular-nums leading-none"
                         style={{
                           animation: "gradient-x 4s ease infinite",
                           animationDelay: `${index * 0.2}s`,
                           fontFamily:
                             "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
-                          wordBreak: "keep-all",
-                          overflowWrap: "normal",
                         }}
                       >
                         {stat.value}
@@ -220,7 +226,7 @@ const Hero = () => {
 
                       {/* Label */}
                       <p
-                        className="text-[10px] sm:text-xs md:text-sm text-gray-300 leading-tight font-medium tracking-wide group-hover:text-white transition-colors duration-300 mt-auto"
+                        className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs text-gray-300 leading-tight font-medium tracking-wide group-hover:text-white transition-colors duration-300 mt-auto"
                         style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                       >
                         {stat.label}
@@ -244,11 +250,62 @@ const Hero = () => {
               style={{ animationDelay: "500ms" }}
             />
           </div>
+
+          {/* RIGHT Column - Developer Image */}
+          <FadeIn delay={200}>
+            <div className="relative w-full max-w-[400px] lg:max-w-[450px] mx-auto lg:ml-auto lg:mr-0 mt-8 lg:mt-0">
+              <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group">
+                {/* Thin animated border */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                  <div
+                    className="absolute inset-[-1px] bg-gradient-to-r from-primary via-emerald-400 to-green-400 animate-spin-slow rounded-2xl"
+                    style={{ animationDuration: "6s" }}
+                  ></div>
+                </div>
+
+                {/* Image Container */}
+                <div className="relative rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]">
+                  <img
+                    src="/images/developer-portrait2.jpg"
+                    alt="Developer at work"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Technology Logos */}
+                <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 z-20">
+                  <FadeIn delay={500}>
+                    <div className="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-3 sm:px-5 py-2 sm:py-2.5">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <SiReact className="w-full h-full text-primary" />
+                      </div>
+
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <SiNextdotjs className="w-full h-full text-primary" />
+                      </div>
+
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <SiNodedotjs className="w-full h-full text-primary" />
+                      </div>
+
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <SiTailwindcss className="w-full h-full text-primary" />
+                      </div>
+
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <SiMongodb className="w-full h-full text-primary" />
+                      </div>
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
 
       <style>{`
         @keyframes gradient-x {
@@ -271,7 +328,19 @@ const Hero = () => {
           90% { opacity: 1; }
           50% { transform: translateY(-100px) translateX(50px); }
         }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
       `}</style>
+
+      {/* Scroll Indicator */}
+      <button
+        onClick={() => scrollToSection("about")}
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-30"
+      >
+        <ChevronDown className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+      </button>
     </section>
   );
 };

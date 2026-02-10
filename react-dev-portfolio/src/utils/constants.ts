@@ -26,7 +26,7 @@ export const PERSONAL_INFO: PersonalInfo = {
   email: "pathumikavee@gmail.com",
   location: "Colombo, Sri Lanka",
   tagline: "Turning ideas into real-world full-stack and AI-driven applications",
-  resume: "/resume.pdf",
+  resume: "/images/resume.pdf",
   bio: [
     "I'm a passionate Full Stack Developer with hands-on experience building modern, scalable web applications using React, Next.js, Node.js, and MongoDB.",
     "I enjoy transforming complex problems into clean, intuitive solutions and love working with both frontend and backend technologies.",
