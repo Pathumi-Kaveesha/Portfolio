@@ -1,7 +1,7 @@
 import { ChevronDown, Star } from "lucide-react";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
-import FadeIn from "../animations/FadeIn";
+import { useEffect, useRef, useState } from "react";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import {
   SiMongodb,
@@ -12,6 +12,13 @@ import {
 } from "react-icons/si";
 
 const Hero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on mount
+    setIsVisible(true);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-950 via-black to-gray-900 pt-10 pb-7">
       <RadialGradientBackground variant="hero" />
@@ -40,7 +47,13 @@ const Hero = () => {
           {/* Left Column - Content */}
           <div className="text-left space-y-4 md:space-y-5">
             {/* Badge with shimmer effect */}
-            <FadeIn delay={0}>
+            <div
+              className={`transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 relative group cursor-pointer">
                 {/* Multi-layer glow */}
                 <div
@@ -67,10 +80,17 @@ const Hero = () => {
                   </span>
                 </div>
               </div>
-            </FadeIn>
+            </div>
 
             {/* Heading with gradient animation */}
-            <FadeIn delay={100}>
+            <div
+              className={`transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "100ms" }}
+            >
               <h1
                 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-3 md:mb-4 leading-[1.1] tracking-tight"
                 style={{
@@ -112,10 +132,17 @@ const Hero = () => {
                   />
                 </span>
               </h1>
-            </FadeIn>
+            </div>
 
             {/* Paragraph with slide-in effect */}
-            <FadeIn delay={200}>
+            <div
+              className={`transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
               <p
                 className="text-sm md:text-base lg:text-lg text-gray-300 max-w-[550px] leading-relaxed font-light tracking-wide relative group"
                 style={{ fontFamily: "Inter, system-ui, sans-serif" }}
@@ -143,10 +170,17 @@ const Hero = () => {
                   into exceptional digital experiences.
                 </span>
               </p>
-            </FadeIn>
+            </div>
 
             {/* Button with advanced hover effects */}
-            <FadeIn delay={300}>
+            <div
+              className={`transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
               <button
                 onClick={() => scrollToSection("contact")}
                 className="group relative inline-flex items-center overflow-hidden mt-2 md:mt-3"
@@ -196,10 +230,17 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-5 bg-primary animate-pulse" />
               </button>
-            </FadeIn>
+            </div>
 
             {/* Stats Section with modern cards */}
-            <FadeIn delay={400}>
+            <div
+              className={`transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
               <div className="grid grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 max-w-full mt-5 md:mt-6 lg:mt-8">
                 {STATS.map((stat, index) => (
                   <div key={index} className="relative group text-left w-full">
@@ -241,7 +282,7 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-            </FadeIn>
+            </div>
 
             {/* Decorative animated elements */}
             <div className="absolute -left-20 top-1/2 w-60 h-60 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse" />
@@ -252,7 +293,14 @@ const Hero = () => {
           </div>
 
           {/* RIGHT Column - Developer Image */}
-          <FadeIn delay={200}>
+          <div
+            className={`transition-all duration-1000 ease-out ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
             <div className="relative w-full max-w-[400px] lg:max-w-[450px] mx-auto lg:ml-auto lg:mr-0 mt-8 lg:mt-0">
               <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group">
                 {/* Thin animated border */}
@@ -274,7 +322,12 @@ const Hero = () => {
 
                 {/* Technology Logos */}
                 <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 z-20">
-                  <FadeIn delay={500}>
+                  <div
+                    className={`transition-all duration-1000 ease-out ${
+                      isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                    }`}
+                    style={{ transitionDelay: "500ms" }}
+                  >
                     <div className="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-3 sm:px-5 py-2 sm:py-2.5">
                       <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <SiReact className="w-full h-full text-primary" />
@@ -296,11 +349,11 @@ const Hero = () => {
                         <SiMongodb className="w-full h-full text-primary" />
                       </div>
                     </div>
-                  </FadeIn>
+                  </div>
                 </div>
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </div>
 
