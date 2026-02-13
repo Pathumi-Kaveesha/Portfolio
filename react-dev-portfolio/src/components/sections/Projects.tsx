@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { projects, categories } from "../../data/projects";
 import { Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectCard from "../ui/ProjectCard";
@@ -23,6 +23,13 @@ const Projects: React.FC = () => {
     new Set(),
   );
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [filtersVisible, setFiltersVisible] = useState(false);
+  const [carouselVisible, setCarouselVisible] = useState(false);
+
+  const headerRef = useRef<HTMLDivElement>(null);
+  const filtersRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects: Project[] =
     activeCategory === "All"
@@ -48,6 +55,41 @@ const Projects: React.FC = () => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    };
+
+    const headerObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHeaderVisible(true);
+      }
+    }, observerOptions);
+
+    const filtersObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setFiltersVisible(true);
+      }
+    }, observerOptions);
+
+    const carouselObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setCarouselVisible(true);
+      }
+    }, observerOptions);
+
+    if (headerRef.current) headerObserver.observe(headerRef.current);
+    if (filtersRef.current) filtersObserver.observe(filtersRef.current);
+    if (carouselRef.current) carouselObserver.observe(carouselRef.current);
+
+    return () => {
+      if (headerRef.current) headerObserver.unobserve(headerRef.current);
+      if (filtersRef.current) filtersObserver.unobserve(filtersRef.current);
+      if (carouselRef.current) carouselObserver.unobserve(carouselRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -145,7 +187,10 @@ const Projects: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div
-            className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-1000 ease-out ${
+              headerVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 relative group cursor-default">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" />
@@ -189,8 +234,12 @@ const Projects: React.FC = () => {
 
           {/* Category Filter */}
           <div
-            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-            style={{ transitionDelay: "100ms" }}
+            ref={filtersRef}
+            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${
+              filtersVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+            }`}
           >
             {categories.map((category) => {
               const isActive = activeCategory === category;
@@ -215,8 +264,12 @@ const Projects: React.FC = () => {
 
           {/* Carousel */}
           <div
-            className={`relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-            style={{ transitionDelay: "200ms" }}
+            ref={carouselRef}
+            className={`relative transition-all duration-1000 ease-out ${
+              carouselVisible
+                ? "opacity-100 translate-y-0 scale-100"
+                : "opacity-0 translate-y-20 scale-95"
+            }`}
           >
             {/* Navigation Arrows */}
             {filteredProjects.length > cardsPerView && (
