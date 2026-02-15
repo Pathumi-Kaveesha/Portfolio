@@ -77,52 +77,65 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-2 md:py-22 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden"
+      className="relative py-20 md:py-28 bg-gradient-to-br from-[#1a1512] via-[#0a0806] to-[#1a1512] overflow-hidden"
     >
       <RadialGradientBackground variant="about" />
 
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+      {/* Same background as Hero */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E5D3C5]/20 rounded-full blur-[120px] animate-pulse" />
+        <div
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#D4A574]/15 rounded-full blur-[120px] animate-pulse"
+          style={{ animationDelay: "700ms" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A882]/10 rounded-full blur-[150px] animate-pulse"
+          style={{ animationDelay: "1000ms" }}
+        />
+      </div>
+
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(229,211,197,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(229,211,197,.04)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)] animate-pulse" />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(229,211,197,0.08),transparent_50%)] animate-pulse" />
+
+      {/* Top fade to blend with hero */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0806] via-[#0a0806]/50 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={sectionRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24"
         >
           <div
-            className={`flex flex-col gap-10 transition-all duration-1000 ease-out ${
+            className={`flex flex-col gap-8 transition-all duration-1000 ease-out ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-20"
             }`}
           >
-            <div className="flex flex-col gap-7">
-              <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/20 bg-primary/5 rounded-full w-fit">
-                <Code2 className="w-4 h-4 text-primary" />
-                <span
-                  className="text-sm text-primary font-semibold"
-                  style={{ fontFamily: "Inter, system-ui, sans-serif" }}
-                >
-                  Full-Stack Developer
-                </span>
-                <Sparkles className="w-4 h-4 text-primary" />
-              </div>
-
+            <div className="flex flex-col gap-6">
               <h2
-                className="text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight"
                 style={{
                   fontFamily:
                     "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
                 }}
               >
                 Crafting Digital{" "}
-                <span className="text-primary">Experiences</span> That Matter
+                <span
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto]"
+                  style={{ animation: "gradient-x 4s ease infinite" }}
+                >
+                  Experiences
+                </span>{" "}
+                That Matter
               </h2>
 
               <div className="flex flex-col gap-4">
                 {PERSONAL_INFO.bio.map((paragraph, index) => (
                   <p
                     key={index}
-                    className="text-base text-gray-400 leading-relaxed"
+                    className="text-base lg:text-lg text-gray-300 leading-relaxed"
                     style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                   >
                     {paragraph}
@@ -133,7 +146,7 @@ const About = () => {
 
             <button
               onClick={() => window.open(PERSONAL_INFO.resume, "_blank")}
-              className="inline-flex items-center gap-2 bg-primary/70 hover:bg-primary/50 text-white rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-300 w-fit group shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30"
+              className="inline-flex items-center gap-2 bg-[#E5D3C5]/10 hover:bg-[#E5D3C5]/20 border border-[#E5D3C5]/30 hover:border-[#E5D3C5]/50 text-[#E5D3C5] hover:text-white rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-300 w-fit group"
               style={{
                 fontFamily:
                   "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -145,7 +158,7 @@ const About = () => {
           </div>
 
           <div
-            className={`grid grid-cols-2 gap-4 transition-all duration-1000 ease-out ${
+            className={`grid grid-cols-2 gap-3 lg:gap-4 transition-all duration-1000 ease-out ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-20"
@@ -153,14 +166,15 @@ const About = () => {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="col-span-2 relative group">
-              <div className="relative bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-5 lg:p-6 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <Code2 className="w-6 h-6 text-primary" />
+                  <div className="p-3 bg-[#E5D3C5]/10 rounded-xl">
+                    <Code2 className="w-6 h-6 text-[#E5D3C5]" />
                   </div>
                   <div className="flex-1">
                     <h3
-                      className="text-lg font-bold text-white mb-2"
+                      className="text-lg lg:text-xl font-bold text-white mb-2"
                       style={{
                         fontFamily:
                           "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -169,7 +183,7 @@ const About = () => {
                       Expertise
                     </h3>
                     <p
-                      className="text-sm text-gray-400 leading-relaxed"
+                      className="text-sm lg:text-base text-gray-300 leading-relaxed"
                       style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                     >
                       Specialized in building scalable web applications with
@@ -181,12 +195,13 @@ const About = () => {
             </div>
 
             <div className="relative group">
-              <div className="relative bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
-                  <Sparkles className="w-5 h-5 text-primary" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-5 lg:p-6 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1 h-full">
+                <div className="p-3 bg-[#E5D3C5]/10 rounded-xl w-fit mb-4">
+                  <Sparkles className="w-5 h-5 text-[#E5D3C5]" />
                 </div>
                 <h3
-                  className="text-base font-bold text-white mb-2"
+                  className="text-base lg:text-lg font-bold text-white mb-2"
                   style={{
                     fontFamily:
                       "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -195,7 +210,7 @@ const About = () => {
                   Clean Code
                 </h3>
                 <p
-                  className="text-sm text-gray-400 leading-relaxed"
+                  className="text-sm lg:text-base text-gray-300 leading-relaxed"
                   style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                 >
                   Writing maintainable code that scales.
@@ -204,12 +219,13 @@ const About = () => {
             </div>
 
             <div className="relative group">
-              <div className="relative bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
-                  <Zap className="w-5 h-5 text-primary" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-5 lg:p-6 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1 h-full">
+                <div className="p-3 bg-[#E5D3C5]/10 rounded-xl w-fit mb-4">
+                  <Zap className="w-5 h-5 text-[#E5D3C5]" />
                 </div>
                 <h3
-                  className="text-base font-bold text-white mb-2"
+                  className="text-base lg:text-lg font-bold text-white mb-2"
                   style={{
                     fontFamily:
                       "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -218,7 +234,7 @@ const About = () => {
                   Performance
                 </h3>
                 <p
-                  className="text-sm text-gray-400 leading-relaxed"
+                  className="text-sm lg:text-base text-gray-300 leading-relaxed"
                   style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                 >
                   Optimizing for speed in every project.
@@ -227,12 +243,14 @@ const About = () => {
             </div>
 
             <div className="col-span-2 relative group">
-              <div className="relative bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-5 lg:p-6 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1">
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
                     <div
-                      className="text-3xl font-black text-primary mb-1"
+                      className="text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-1"
                       style={{
+                        animation: "gradient-x 4s ease infinite",
                         fontFamily:
                           "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
                       }}
@@ -240,7 +258,7 @@ const About = () => {
                       24/7
                     </div>
                     <div
-                      className="text-xs text-gray-400 font-medium"
+                      className="text-xs lg:text-sm text-gray-300 font-medium"
                       style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                     >
                       Support Available
@@ -248,8 +266,10 @@ const About = () => {
                   </div>
                   <div>
                     <div
-                      className="text-3xl font-black text-primary mb-1"
+                      className="text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-1"
                       style={{
+                        animation: "gradient-x 4s ease infinite",
+                        animationDelay: "0.5s",
                         fontFamily:
                           "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
                       }}
@@ -257,7 +277,7 @@ const About = () => {
                       Fast
                     </div>
                     <div
-                      className="text-xs text-gray-400 font-medium"
+                      className="text-xs lg:text-sm text-gray-300 font-medium"
                       style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                     >
                       Delivery Time
@@ -279,16 +299,22 @@ const About = () => {
         >
           <div className="text-center">
             <h3
-              className="text-3xl font-bold text-white mb-3"
+              className="text-3xl lg:text-4xl font-bold text-white mb-3"
               style={{
                 fontFamily:
                   "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
               }}
             >
-              Tech Stack & <span className="text-primary">Expertise</span>
+              Tech Stack &{" "}
+              <span
+                className="bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto]"
+                style={{ animation: "gradient-x 4s ease infinite" }}
+              >
+                Expertise
+              </span>
             </h3>
             <p
-              className="text-gray-400 text-base"
+              className="text-gray-300 text-base lg:text-lg"
               style={{ fontFamily: "Inter, system-ui, sans-serif" }}
             >
               Technologies I work with to build amazing products
@@ -296,7 +322,7 @@ const About = () => {
           </div>
 
           <div className="relative w-full max-w-6xl">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
               {skills.map((skill, index) => (
                 <div
                   key={index}
@@ -307,16 +333,15 @@ const About = () => {
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:border-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:z-10">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-green-500/10 rounded-2xl transition-all duration-500" />
-
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+                  <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-6 lg:p-8 flex flex-col items-center justify-center gap-4 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:scale-110 group-hover:z-10 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-primary blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                      <skill.icon className="text-5xl text-gray-400 group-hover:text-primary relative z-10 transition-all duration-500 group-hover:scale-125" />
+                      <div className="absolute inset-0 bg-[#E5D3C5] blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+                      <skill.icon className="text-4xl lg:text-5xl text-gray-400 group-hover:text-[#E5D3C5] relative z-10 transition-all duration-500 group-hover:scale-125" />
                     </div>
 
                     <div
-                      className="text-sm text-gray-500 group-hover:text-white font-semibold text-center transition-colors duration-500"
+                      className="text-sm lg:text-base text-gray-300 group-hover:text-white font-semibold text-center transition-colors duration-500"
                       style={{
                         fontFamily:
                           "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -324,8 +349,6 @@ const About = () => {
                     >
                       {skill.name}
                     </div>
-
-                    <div className="absolute -inset-[1px] bg-gradient-to-br from-primary to-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
                   </div>
                 </div>
               ))}
@@ -333,6 +356,16 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0806] via-[#0a0806]/50 to-transparent pointer-events-none" />
+
+      <style>{`
+        @keyframes gradient-x {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
     </section>
   );
 };

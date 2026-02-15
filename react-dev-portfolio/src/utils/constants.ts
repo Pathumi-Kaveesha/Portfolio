@@ -37,7 +37,7 @@ export const PERSONAL_INFO: PersonalInfo = {
 // SOCIAL_LINKS
 export const SOCIAL_LINKS: SocialLinks = {
   github: "https://github.com/Pathumi-Kaveesha",
-  linkedin: "https://www.linkedin.com/in/pathumikaveesha-75437533a",
+  linkedin: "https://www.linkedin.com/in/pathumi-kaveesha-75437533a/",
 };
 
 // NAV_LINKS
@@ -53,6 +53,6 @@ export const NAV_LINKS: NavLink[] = [
 // STATS
 export const STATS = [
   {label: 'Years Experience', value: '2+'},
-  {label: 'Projects Completed', value: '5+'},
+  {label: 'Projects Completed', value: '6+'},
   {label: 'Technologies', value: '12+'}
 ]
