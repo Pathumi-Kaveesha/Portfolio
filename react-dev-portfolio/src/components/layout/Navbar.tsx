@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Code, Menu, X } from "lucide-react";
 import { NAV_LINKS, PERSONAL_INFO } from "../../utils/constants";
 import { scrollToSection, useScrollSpy } from "../../hooks/useScrollSpy";
