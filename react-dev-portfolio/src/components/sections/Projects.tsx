@@ -122,6 +122,14 @@ const Projects: React.FC = () => {
   const canGoPrevious = currentIndex > 0;
   const canGoNext = currentIndex < maxIndex;
 
+  // Calculate proper transform for mobile
+  const getTransform = () => {
+    if (cardsPerView === 1) {
+      return `translateX(-${currentIndex * 100}%)`;
+    }
+    return `translateX(-${currentIndex * (100 / cardsPerView + 24 / cardsPerView)}%)`;
+  };
+
   return (
     <>
       <style>{`
@@ -167,22 +175,27 @@ const Projects: React.FC = () => {
 
       <section
         id="projects"
-        className="relative min-h-screen py-20 bg-gradient-to-br from-gray-950 via-black to-gray-900 overflow-hidden"
+        className="relative min-h-screen py-10 md:py-10 bg-gradient-to-br from-[#1a1512] via-[#0a0806] to-[#1a1512] overflow-hidden"
       >
         {/* Background Effects */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E5D3C5]/20 rounded-full blur-[120px] animate-pulse" />
           <div
-            className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/15 rounded-full blur-[120px] animate-pulse"
+            className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#D4A574]/15 rounded-full blur-[120px] animate-pulse"
             style={{ animationDelay: "700ms" }}
           />
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[150px] animate-pulse"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A882]/10 rounded-full blur-[150px] animate-pulse"
             style={{ animationDelay: "1000ms" }}
           />
         </div>
 
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(229,211,197,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(229,211,197,.04)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)] animate-pulse" />
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(229,211,197,0.08),transparent_50%)] animate-pulse" />
+
+        {/* Top fade to blend with previous section */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0806] via-[#0a0806]/50 to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -193,11 +206,11 @@ const Projects: React.FC = () => {
             }`}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 relative group cursor-default">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" />
-              <div className="absolute inset-0 bg-primary/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 animate-pulse" />
-              <div className="relative flex items-center gap-2 bg-gradient-to-r from-primary/20 via-emerald-500/20 to-green-500/20 border-2 border-primary/40 rounded-full px-4 py-2 backdrop-blur-md shadow-2xl shadow-primary/20">
-                <Zap className="w-4 h-4 text-primary animate-pulse" />
-                <span className="text-sm text-white tracking-wider font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-emerald-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#E5D3C5]/0 via-[#E5D3C5]/40 to-[#E5D3C5]/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" />
+              <div className="absolute inset-0 bg-[#E5D3C5]/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 animate-pulse" />
+              <div className="relative flex items-center gap-2 bg-gradient-to-r from-[#E5D3C5]/20 via-[#D4A574]/20 to-[#C9A882]/20 border-2 border-[#E5D3C5]/40 rounded-full px-4 py-2 backdrop-blur-md shadow-2xl shadow-[#E5D3C5]/20">
+                <Zap className="w-4 h-4 text-[#E5D3C5] animate-pulse" />
+                <span className="text-sm text-white tracking-wider font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-[#E5D3C5] to-[#D4A574]">
                   MY WORK
                 </span>
               </div>
@@ -214,7 +227,7 @@ const Projects: React.FC = () => {
               </span>{" "}
               <span className="inline-block relative group cursor-default">
                 <span
-                  className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-green-400 bg-[length:200%_auto]"
+                  className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto]"
                   style={{
                     animation: "gradient-x 4s ease infinite",
                     animationDelay: "0.5s",
@@ -222,7 +235,7 @@ const Projects: React.FC = () => {
                 >
                   Projects
                 </span>
-                <span className="absolute inset-0 bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-green-400 blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="absolute inset-0 bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                   Projects
                 </span>
               </span>
@@ -249,13 +262,13 @@ const Projects: React.FC = () => {
                   onClick={() => setActiveCategory(category as Category)}
                   className={`relative px-5 py-2.5 rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-500 transform hover:scale-105 ${
                     isActive
-                      ? "bg-gradient-to-r from-primary to-emerald-400 text-black shadow-2xl shadow-primary/50"
-                      : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10 hover:border-primary/30"
+                      ? "bg-gradient-to-r from-[#E5D3C5] to-[#D4A574] text-black shadow-2xl shadow-[#E5D3C5]/50"
+                      : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10 hover:border-[#E5D3C5]/30"
                   }`}
                 >
                   {category}
                   {isActive && (
-                    <div className="absolute inset-0 rounded-xl bg-primary blur-xl opacity-50 -z-10 animate-pulse" />
+                    <div className="absolute inset-0 rounded-xl bg-[#E5D3C5] blur-xl opacity-50 -z-10 animate-pulse" />
                   )}
                 </button>
               );
@@ -279,7 +292,7 @@ const Projects: React.FC = () => {
                   disabled={!canGoPrevious}
                   className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-20 p-3 md:p-4 rounded-full transition-all duration-300 backdrop-blur-md shadow-2xl shadow-black/50 group ${
                     canGoPrevious
-                      ? "bg-black/80 hover:bg-primary border border-white/20 hover:border-primary hover:scale-110 cursor-pointer"
+                      ? "bg-black/80 hover:bg-[#E5D3C5] border border-white/20 hover:border-[#E5D3C5] hover:scale-110 cursor-pointer"
                       : "bg-black/40 border border-white/10 cursor-not-allowed opacity-50"
                   }`}
                   aria-label="Previous projects"
@@ -294,7 +307,7 @@ const Projects: React.FC = () => {
                   disabled={!canGoNext}
                   className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-20 p-3 md:p-4 rounded-full transition-all duration-300 backdrop-blur-md shadow-2xl shadow-black/50 group ${
                     canGoNext
-                      ? "bg-black/80 hover:bg-primary border border-white/20 hover:border-primary hover:scale-110 cursor-pointer"
+                      ? "bg-black/80 hover:bg-[#E5D3C5] border border-white/20 hover:border-[#E5D3C5] hover:scale-110 cursor-pointer"
                       : "bg-black/40 border border-white/10 cursor-not-allowed opacity-50"
                   }`}
                   aria-label="Next projects"
@@ -309,9 +322,10 @@ const Projects: React.FC = () => {
             {/* Cards Container */}
             <div className="overflow-hidden">
               <div
-                className="carousel-track flex gap-6"
+                className="carousel-track flex"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / cardsPerView + 24 / cardsPerView)}%)`,
+                  transform: getTransform(),
+                  gap: cardsPerView === 1 ? "0px" : "24px",
                 }}
               >
                 {filteredProjects.map((project, index) => (
@@ -319,7 +333,10 @@ const Projects: React.FC = () => {
                     key={project.id}
                     className="flex-shrink-0"
                     style={{
-                      width: `calc(${100 / cardsPerView}% - ${(24 * (cardsPerView - 1)) / cardsPerView}px)`,
+                      width:
+                        cardsPerView === 1
+                          ? "100%"
+                          : `calc(${100 / cardsPerView}% - ${(24 * (cardsPerView - 1)) / cardsPerView}px)`,
                     }}
                   >
                     <ProjectCard
@@ -341,7 +358,7 @@ const Projects: React.FC = () => {
                     onClick={() => setCurrentIndex(index)}
                     className={`transition-all duration-300 rounded-full ${
                       index === currentIndex
-                        ? "w-8 h-2 bg-primary"
+                        ? "w-8 h-2 bg-[#E5D3C5]"
                         : "w-2 h-2 bg-white/30 hover:bg-white/50"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
@@ -355,20 +372,23 @@ const Projects: React.FC = () => {
           <div className="text-center mt-10">
             <p className="text-gray-400 font-medium">
               Showing{" "}
-              <span className="text-primary font-bold text-lg">
+              <span className="text-[#E5D3C5] font-bold text-lg">
                 {Math.min(currentIndex + cardsPerView, filteredProjects.length)}
               </span>{" "}
               of{" "}
-              <span className="text-primary font-bold text-lg">
+              <span className="text-[#E5D3C5] font-bold text-lg">
                 {filteredProjects.length}
               </span>{" "}
               project{filteredProjects.length !== 1 ? "s" : ""}
               {activeCategory !== "All" && (
-                <span className="text-primary ml-2">in {activeCategory}</span>
+                <span className="text-[#E5D3C5] ml-2">in {activeCategory}</span>
               )}
             </p>
           </div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0806] via-[#0a0806]/50 to-transparent pointer-events-none" />
       </section>
     </>
   );

@@ -77,7 +77,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative py-20 md:py-28 bg-gradient-to-br from-[#1a1512] via-[#0a0806] to-[#1a1512] overflow-hidden"
+      className="relative py-10 md:py-10 bg-gradient-to-br from-[#1a1512] via-[#0a0806] to-[#1a1512] overflow-hidden"
     >
       {/* Same background as Hero */}
       <div className="absolute inset-0 overflow-hidden">
@@ -137,8 +137,8 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Skills categories */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {/* Skills categories - All in one row on large screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
           {Object.entries(skillCategories).map(
             ([category, categorySkills], categoryIndex) => (
               <div

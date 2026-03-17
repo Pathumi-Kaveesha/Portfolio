@@ -245,10 +245,10 @@ const About = () => {
             <div className="col-span-2 relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-[#E5D3C5]/10 via-[#D4A574]/10 to-[#C9A882]/10 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
               <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#E5D3C5]/20 rounded-xl lg:rounded-2xl p-5 lg:p-6 hover:border-[#E5D3C5]/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#E5D3C5]/20 group-hover:-translate-y-1">
-                <div className="grid grid-cols-2 gap-6 text-center">
-                  <div>
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  <div className="flex flex-col items-center justify-center text-center">
                     <div
-                      className="text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-1"
+                      className="text-2xl md:text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-2"
                       style={{
                         animation: "gradient-x 4s ease infinite",
                         fontFamily:
@@ -258,15 +258,15 @@ const About = () => {
                       24/7
                     </div>
                     <div
-                      className="text-xs lg:text-sm text-gray-300 font-medium"
+                      className="text-xs md:text-sm text-gray-300 font-medium"
                       style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                     >
                       Support Available
                     </div>
                   </div>
-                  <div>
+                  <div className="flex flex-col items-center justify-center text-center">
                     <div
-                      className="text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-1"
+                      className="text-2xl md:text-3xl lg:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#E5D3C5] via-[#D4A574] to-[#C9A882] bg-[length:200%_auto] mb-2"
                       style={{
                         animation: "gradient-x 4s ease infinite",
                         animationDelay: "0.5s",
@@ -277,7 +277,7 @@ const About = () => {
                       Fast
                     </div>
                     <div
-                      className="text-xs lg:text-sm text-gray-300 font-medium"
+                      className="text-xs md:text-sm text-gray-300 font-medium"
                       style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                     >
                       Delivery Time
