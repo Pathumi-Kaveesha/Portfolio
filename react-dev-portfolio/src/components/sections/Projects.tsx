@@ -18,7 +18,6 @@ export interface Project {
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const [isVisible, setIsVisible] = useState(false);
   const [expandedProjects, setExpandedProjects] = useState<Set<number>>(
     new Set(),
   );
@@ -47,8 +46,6 @@ const Projects: React.FC = () => {
   const [cardsPerView, setCardsPerView] = useState(getCardsPerView());
 
   useEffect(() => {
-    setIsVisible(true);
-
     const handleResize = () => {
       setCardsPerView(getCardsPerView());
     };
