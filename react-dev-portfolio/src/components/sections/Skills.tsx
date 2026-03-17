@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { skills } from "../../data/skills";
 import * as Icons from "lucide-react";
 

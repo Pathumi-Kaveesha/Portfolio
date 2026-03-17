@@ -328,7 +328,7 @@ const Projects: React.FC = () => {
                   gap: cardsPerView === 1 ? "0px" : "24px",
                 }}
               >
-                {filteredProjects.map((project, index) => (
+                {filteredProjects.map((project) => (
                   <div
                     key={project.id}
                     className="flex-shrink-0"

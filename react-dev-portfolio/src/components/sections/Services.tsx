@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { services } from "../../data/services";
 import * as Icons from "lucide-react";
 import { Sparkles } from "lucide-react";
-import FadeIn from "../animations/FadeIn";
 
 const Services = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());

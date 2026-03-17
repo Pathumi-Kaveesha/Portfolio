@@ -1,7 +1,7 @@
 import { ChevronDown, Star } from "lucide-react";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import {
   SiMongodb,
